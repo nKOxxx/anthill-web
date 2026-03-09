@@ -4,18 +4,14 @@ import { api } from '../lib/api';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({ email: 'demo@anthill.com', role: 'admin' });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Check for existing token
-    const token = localStorage.getItem('token');
-    if (token) {
-      api.setToken(token);
-      fetchUser();
-    } else {
-      setLoading(false);
-    }
+    // DEMO MODE: Auto-set dummy token
+    const demoToken = 'demo-token-for-testing';
+    localStorage.setItem('token', demoToken);
+    api.setToken(demoToken);
   }, []);
 
   const fetchUser = async () => {
