@@ -11,17 +11,8 @@ import Login from './pages/Login'
 import AuthCallback from './pages/AuthCallback'
 
 function PrivateRoute({ children }) {
-  const { isAuthenticated, loading } = useAuth();
-  
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500"></div>
-      </div>
-    );
-  }
-  
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  // AUTH BYPASSED FOR DEMO - Remove this later
+  return children;
 }
 
 function App() {
